@@ -1,13 +1,15 @@
+server:
+  port: ${PORT:8080}  # <--- ESSA LINHA É A CHAVE DO SUCESSO
+
 spring:
   application:
     name: pixgateway-backend
   security:
     user:
-      name: 
-      password: 
+      name: admin
+      password: admin123
   
   datasource:
-    # Se existir DATABASE_URL na nuvem, ele usa. Se não, usa o seu localhost!
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5433/pixgateway_db}
     username: ${PGUSER:felipe}
     password: ${PGPASSWORD:pixpass}
