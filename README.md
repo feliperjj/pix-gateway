@@ -6,7 +6,10 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 
-Sistema full stack de geração e gestão de cobranças via Pix. O backend gera payloads no padrão EMV (Pix Copia e Cola) e QR Codes reais; o frontend consome a API e simula o fluxo completo de pagamento.
+Sistema **full stack** de geração e gestão de cobranças via Pix. O backend gera payloads no padrão **EMV (Pix Copia e Cola)** e **QR Codes reais**; o frontend consome a API e simula o fluxo completo de pagamento.
+
+🔗 **Demo ao vivo:** [pix-gateway.vercel.app](https://pix-gateway.vercel.app)
+
 
 ---
 
@@ -39,6 +42,7 @@ Aqui está o ciclo completo de uma cobrança, desde a sua criação até a visua
 
 ---
 
+
 ## 🏗️ Arquitetura
 
 ```
@@ -68,6 +72,8 @@ Aqui está o ciclo completo de uma cobrança, desde a sua criação até a visua
 └─────────────────────────────────────────────┘
 ```
 
+A interface `PixProvider` foi desenhada para extensibilidade — substituir `MockPixProvider` pela integração com um banco real não exige alteração no `CobrancaService`.
+
 ---
 
 ## 🔌 Endpoints da API
@@ -80,6 +86,7 @@ Aqui está o ciclo completo de uma cobrança, desde a sua criação até a visua
 | `POST` | `/api/cobrancas/{id}/pagar` | Simula confirmação de pagamento |
 
 **Exemplo de request — criar cobrança:**
+
 ```json
 POST /api/cobrancas
 {
@@ -89,6 +96,7 @@ POST /api/cobrancas
 ```
 
 **Exemplo de response:**
+
 ```json
 {
   "id": 1,
@@ -113,7 +121,7 @@ POST /api/cobrancas
 | Banco de Dados | PostgreSQL (Docker Compose) |
 | Frontend | React, Vite, Axios |
 | Testes | JUnit 5, Mockito |
-| Infra | Docker, GitHub Codespaces |
+| Infra | Docker, Vercel, GitHub Codespaces |
 
 ---
 
@@ -159,8 +167,8 @@ npm install
 npm run dev
 ```
 
-Acesse: `http://localhost:5174`
-Swagger: `http://localhost:8080/swagger-ui/index.html`
+- Frontend: http://localhost:5174
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
 
 ---
 
@@ -171,10 +179,13 @@ cd backend
 ./mvnw test
 ```
 
+Os testes cobrem as regras de negócio do `CobrancaService` com JUnit 5 e Mockito, incluindo criação de cobrança, validação de payload EMV e simulação de pagamento.
+
 ---
 
 ## 👤 Autor
 
 Desenvolvido por **Felipe Bento**
 
-[![GitHub](https://img.shields.io/badge/GitHub-@feliperjj-181717?style=flat&logo=github)](https://github.com/feliperjj)
+[![GitHub](https://img.shields.io/badge/GitHub-feliperjj-181717?style=flat&logo=github)](https://github.com/feliperjj)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-felipe--bento-0077B5?style=flat&logo=linkedin)](https://linkedin.com/in/felipe-bento-)
