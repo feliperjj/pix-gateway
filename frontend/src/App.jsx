@@ -10,7 +10,7 @@ function App() {
   const [qrImageUrl, setQrImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_URL = 'https://zany-capybara-4rpw9xjww962jxvq-8080.app.github.dev/api/cobrancas';
+  const API_URL = 'https://pix-gateway-production.up.railway.app/api/cobrancas';
   const authConfig = { auth: { username: 'admin', password: 'admin123' } };
 
   // Efeito para gerar a imagem do QR Code sempre que a cobrança mudar
