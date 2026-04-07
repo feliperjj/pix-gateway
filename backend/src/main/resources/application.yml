@@ -3,8 +3,8 @@ spring:
     name: pixgateway-backend
   security:
     user:
-      name: admin
-      password: admin123
+      name: 
+      password: 
   
   datasource:
     # Se existir DATABASE_URL na nuvem, ele usa. Se não, usa o seu localhost!
