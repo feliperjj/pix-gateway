@@ -1,28 +1,20 @@
 package com.pixgateway.backend.infra.exception;
 
+import com.pixgateway.backend.domain.dto.RestErrorMessage;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.HashMap;
-import java.util.Map;
+@ControllerAdvice
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-@RestControllerAdvice
-public class RestExceptionHandler {
-
-    // Esse método captura especificamente erros de validação (@Valid)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        
-        return ResponseEntity.badRequest().body(errors);
+    @ExceptionHandler(RuntimeException.class)
+    private ResponseEntity<RestErrorMessage> runtimeHandler(RuntimeException exception) {
+        RestErrorMessage threatResponse = new RestErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(threatResponse);
     }
+    
+    // Você pode adicionar outros tipos de erro aqui depois (ex: erro de banco, erro de validação)
 }

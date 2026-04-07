@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:15
+    container_name: pixgateway-db
+    environment:
+      POSTGRES_DB: pixgateway_db
+      POSTGRES_USER: felipe
+      POSTGRES_PASSWORD: pixpass
+    ports:
+      - "5433:5432"
