@@ -8,9 +8,10 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*") // <--- ADICIONE ESTA LINHA AQUI!
 @RestController
 @RequestMapping("/api/cobrancas")
+// Liberação total de CORS direto no Controller para não ter erro
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS})
 public class CobrancaController {
 
     @Autowired
