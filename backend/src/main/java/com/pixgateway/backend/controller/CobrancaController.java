@@ -1,5 +1,5 @@
 package com.pixgateway.backend.controller;
-
+import java.util.UUID;
 import com.pixgateway.backend.domain.Cobranca;
 import com.pixgateway.backend.service.CobrancaService;
 import jakarta.validation.Valid;
@@ -18,6 +18,10 @@ public class CobrancaController {
     @PostMapping
     public Cobranca criar(@Valid @RequestBody Cobranca cobranca) {
         return service.criarCobranca(cobranca);
+    }
+    @PostMapping("/{id}/pagar")
+    public Cobranca simularPagamento(@PathVariable UUID id) {
+        return service.pagarCobranca(id);
     }
 
     @GetMapping
