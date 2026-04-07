@@ -1,0 +1,32 @@
+package com.pixgateway.backend.controller;
+
+import com.pixgateway.backend.domain.Cobranca;
+import com.pixgateway.backend.service.CobrancaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/cobrancas")
+public class CobrancaController {
+
+    @Autowired
+    private CobrancaService service;
+
+    @PostMapping
+    public Cobranca criar(@Valid @RequestBody Cobranca cobranca) {
+    return service.criarCobranca(cobranca);
+    }
+
+    @PostMapping
+    public Cobranca criar(@RequestBody Cobranca cobranca) {
+        // Recebe o JSON, manda pro service salvar e retorna o objeto com o ID gerado
+        return service.criarCobranca(cobranca);
+    }
+
+    @GetMapping
+    public List<Cobranca> listar() {
+        return service.listarTodas();
+    }
+}
