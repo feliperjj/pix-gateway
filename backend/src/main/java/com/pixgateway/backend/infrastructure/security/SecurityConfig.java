@@ -9,7 +9,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -19,9 +19,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .cors(cors -> {}) // Ativa o suporte a CORS
+            .cors(cors -> {}) // Ativa o suporte básico
             .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll() // Liberação total para teste
+                .anyRequest().permitAll() // Libera tudo para testarmos o deploy
             );
         
         return http.build();
@@ -33,9 +33,9 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(false);
-        config.addAllowedOrigin("*"); // Libera qualquer site
-        config.addAllowedHeader("*"); // Libera qualquer header
-        config.addAllowedMethod("*"); // Libera GET, POST, OPTIONS, etc.
+        config.setAllowedOrigins(List.of("*")); 
+        config.setAllowedHeaders(List.of("*")); 
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
