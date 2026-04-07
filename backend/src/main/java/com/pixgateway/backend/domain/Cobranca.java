@@ -33,10 +33,10 @@ public class Cobranca {
     @Column(columnDefinition = "TEXT")
     private String qrCode;
 
-    private String txid; // ID da transação que o "Banco" gera
+    private String txid; 
 
     @Column(columnDefinition = "TEXT")
-    private String pixCopiaCola; // O código Pix real para o cliente pagar
+    private String pixCopiaCola; 
 
     private OffsetDateTime dataCriacao = OffsetDateTime.now();
     

@@ -2,6 +2,7 @@ package com.pixgateway.backend.controller;
 
 import com.pixgateway.backend.domain.Cobranca;
 import com.pixgateway.backend.service.CobrancaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +17,6 @@ public class CobrancaController {
 
     @PostMapping
     public Cobranca criar(@Valid @RequestBody Cobranca cobranca) {
-    return service.criarCobranca(cobranca);
-    }
-
-    @PostMapping
-    public Cobranca criar(@RequestBody Cobranca cobranca) {
-        // Recebe o JSON, manda pro service salvar e retorna o objeto com o ID gerado
         return service.criarCobranca(cobranca);
     }
 
