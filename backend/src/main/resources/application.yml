@@ -3,8 +3,8 @@ spring:
     name: pixgateway-backend
     security:
     user:
-      name: admin
-      password: admin123
+      name: 
+      password: 
   
   datasource:
     url: jdbc:postgresql://localhost:5433/pixgateway_db
