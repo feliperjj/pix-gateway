@@ -20,19 +20,19 @@ Aqui está o ciclo completo de uma cobrança, desde a sua criação até a visua
 
 <p align="center">
   <b>1️⃣ Criando uma Nova Cobrança (Interface React)</b><br>
-  <img src="./docs/NovaCobrança.JPG" width="600" alt="Tela de criação de nova cobrança">
+  <img src="./frontend/images/NovaCobrança.JPG" width="600" alt="Tela de criação de nova cobrança">
   <br><br>
 
   <b>2️⃣ QR Code Dinâmico Gerado</b><br>
-  <img src="./docs/TelaQrCode.JPG" width="450" alt="Tela exibindo o QR Code gerado">
+  <img src="./frontend/images/TelaQrCode.JPG" width="450" alt="Tela exibindo o QR Code gerado">
   <br><br>
 
   <b>3️⃣ Pagamento Confirmado (Simulação)</b><br>
-  <img src="./docs/Pago.JPG" width="600" alt="Tela de confirmação de pagamento">
+  <img src="./frontend/images/Pago.JPG" width="600" alt="Tela de confirmação de pagamento">
   <br><br>
 
   <b>4️⃣ Documentação e Teste dos Endpoints (Swagger UI)</b><br>
-  <img src="./docs/Swagger Endpoints.JPG" width="700" alt="Endpoints documentados no Swagger">
+  <img src="./frontend/images/Swagger Endpoints.JPG" width="700" alt="Endpoints documentados no Swagger">
 </p>
 
 ---
