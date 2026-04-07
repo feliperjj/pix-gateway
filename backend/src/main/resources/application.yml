@@ -1,15 +1,16 @@
 spring:
   application:
     name: pixgateway-backend
-    security:
+  security:
     user:
       name: admin
       password: admin123
   
   datasource:
-    url: jdbc:postgresql://localhost:5433/pixgateway_db
-    username: felipe
-    password: pixpass
+    # Se existir DATABASE_URL na nuvem, ele usa. Se não, usa o seu localhost!
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5433/pixgateway_db}
+    username: ${PGUSER:felipe}
+    password: ${PGPASSWORD:pixpass}
     driver-class-name: org.postgresql.Driver
 
   jpa:
