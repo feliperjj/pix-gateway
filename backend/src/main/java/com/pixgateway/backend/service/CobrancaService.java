@@ -24,7 +24,15 @@ public class CobrancaService {
     private PixProvider pixProvider;
 
     public Cobranca criarCobranca(Cobranca cobranca) {
-        log.info("Gerando novo Pix no valor de R$ {}", cobranca.getValor());
+    
+        String chaveOriginal = cobranca.getChavePix();
+        if (chaveOriginal != null && !chaveOriginal.contains("@")) {
+            String chaveLimpa = chaveOriginal.replaceAll("[^0-9]", "");
+            cobranca.setChavePix(chaveLimpa);
+            log.info("Chave Pix sanitizada para o processamento: {}", chaveLimpa);
+        }
+
+        log.info("Gerando novo Pix no valor de R$ {} para a chave {}", cobranca.getValor(), cobranca.getChavePix());
         PixResponseDTO response = pixProvider.gerarCobranca(cobranca.getValor(), cobranca.getChavePix());
 
         cobranca.setTxid(response.getTxid());
