@@ -11,7 +11,7 @@ function App() {
   const [qrImageUrl, setQrImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_URL = `${import.meta.env.VITE_API_URL}/api/cobrancas`;
+ const API_URL = 'https://pix-gateway.onrender.com/api/cobrancas';
   const authConfig = { auth: { username: 'admin', password: 'admin123' } };
 
   // Efeito para gerar a imagem do QR Code sempre que a cobrança mudar
