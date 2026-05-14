@@ -9,6 +9,7 @@
 Sistema **full stack** de geração e gestão de cobranças via Pix. O backend gera payloads no padrão **EMV (Pix Copia e Cola)** e **QR Codes reais**; o frontend consome a API e simula o fluxo completo de pagamento.
 
 🔗 **Demo ao vivo:** [pix-gateway.vercel.app](https://pix-gateway.vercel.app)
+OBS: O projeto está hospedado em instâncias gratuitas. A primeira requisição pode levar até 50 segundos para processar devido ao 'cold start' do servidor e do banco de dados
 
 
 ---
